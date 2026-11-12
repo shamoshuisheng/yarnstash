@@ -1,1 +1,746 @@
 
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YarnStash · 技术支持</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10' fill='none' stroke='white' stroke-width='2'/><path d='M8 8s4-3 8 0M8 12s4 3 8 0M8 16s4-3 8 0' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'/></svg>">
+<style>
+  :root {
+    /* ==== 主题色（薄荷绿治愈风）==== */
+    --accent-start: #547C6E;
+    --accent-end: #88B4A4;
+    --accent: var(--accent-start);
+    --accent-2: var(--accent-end);
+    --accent-grad: linear-gradient(135deg, var(--accent-start) 0%, var(--accent-end) 100%);
+    --accent-glow: rgba(84, 124, 110, 0.35);
+
+    /* ==== 深色模式 ==== */
+    --bg: #0f1211;
+    --surface: #161a19;
+    --surface-2: #1f2522;
+    --border: #2a302d;
+    --text: #eef1ef;
+    --muted: #8fa39a;
+
+    /* ==== 浅色模式 ==== */
+    --bg-light: #FAF8F5;
+    --surface-light: #FFFFFF;
+    --surface-2-light: #F2EFEA;
+    --border-light: #E5E2DD;
+    --text-light: #2C2C2C;
+    --muted-light: #8A8A8A;
+  }
+
+  /* 浅色模式变量覆盖 */
+  [data-theme="light"] {
+    --bg: var(--bg-light);
+    --surface: var(--surface-light);
+    --surface-2: var(--surface-2-light);
+    --border: var(--border-light);
+    --text: var(--text-light);
+    --muted: var(--muted-light);
+    --accent-glow: rgba(84, 124, 110, 0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Noto Sans SC", "Noto Sans JP", "Helvetica Neue", sans-serif;
+    line-height: 1.7;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.35s ease, color 0.35s ease;
+  }
+  a { color: var(--accent-end); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+
+  /* ===== 顶部工具栏 ===== */
+  .top-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 0 0;
+  }
+  .tools { display: flex; gap: 8px; align-items: center; }
+  .btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    cursor: pointer;
+    transition: all 0.18s;
+    font-family: inherit;
+    display: inline-flex; align-items: center; gap: 5px;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--text); }
+  .btn.active {
+    background: var(--accent-grad);
+    color: #fff; border-color: transparent;
+    font-weight: 600;
+  }
+
+  /* 颜色选择器 */
+  .theme-picker {
+    position: relative;
+  }
+  .swatches {
+    display: flex; gap: 6px;
+    padding: 8px 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    position: absolute; top: 100%; right: 0; margin-top: 6px;
+    opacity: 0; pointer-events: none;
+    transform: translateY(-6px);
+    transition: all 0.2s;
+    z-index: 100;
+  }
+  .theme-picker.open .swatches {
+    opacity: 1; pointer-events: auto; transform: translateY(0);
+  }
+  .swatch {
+    width: 26px; height: 26px; border-radius: 50%;
+    cursor: pointer; border: 2px solid transparent;
+    transition: transform 0.15s;
+  }
+  .swatch:hover { transform: scale(1.15); }
+  .swatch.active { border-color: #fff; box-shadow: 0 0 0 1px var(--accent-start); }
+
+  /* ===== Hero ===== */
+  .hero {
+    padding: 56px 0 44px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .logo-mark {
+    width: 64px; height: 64px; margin: 0 auto 22px;
+    border-radius: 18px;
+    background: var(--accent-grad);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 10px 36px var(--accent-glow);
+    position: relative;
+    overflow: hidden;
+  }
+  .logo-mark::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.35), transparent 55%);
+  }
+  .logo-mark svg { width: 34px; height: 34px; position: relative; z-index: 1; }
+  .hero h1 {
+    font-size: 32px; font-weight: 700; letter-spacing: -0.5px;
+    margin-bottom: 10px;
+  }
+  .hero p { color: var(--muted); font-size: 15px; max-width: 500px; margin: 0 auto; }
+
+  .contact-bar {
+    margin: 36px auto 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px;
+    transition: border-color 0.2s;
+  }
+  .contact-bar:hover { border-color: var(--accent-end); }
+  .contact-bar .label { color: var(--muted); font-size: 13px; }
+  .contact-bar .email { font-weight: 600; font-size: 15px; }
+  .contact-btn {
+    background: var(--accent-grad);
+    color: #fff !important;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .contact-btn:hover {
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px var(--accent-glow);
+  }
+
+  /* ===== 通用 Section ===== */
+  section { padding: 44px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+  h2 {
+    font-size: 20px; font-weight: 700; margin-bottom: 22px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  h2::before {
+    content: ""; width: 4px; height: 20px; border-radius: 2px;
+    background: var(--accent-grad);
+  }
+
+  /* ===== 功能指引网格 ===== */
+  .feat-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+  }
+  .feat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .feat:hover {
+    border-color: var(--accent-end);
+    transform: translateY(-2px);
+  }
+  .feat h3 { font-size: 14.5px; font-weight: 600; margin-bottom: 6px; }
+  .feat p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .feat .icon {
+    width: 34px; height: 34px; border-radius: 9px;
+    background: var(--accent-grad);
+    margin-bottom: 12px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 14px var(--accent-glow);
+  }
+  .feat .icon svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2; }
+
+  /* ===== FAQ ===== */
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    background: var(--surface);
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .faq-item.open { border-color: var(--accent-end); }
+  .faq-q {
+    padding: 17px 20px;
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    font-weight: 600; font-size: 14.5px;
+    user-select: none;
+    transition: background 0.15s;
+  }
+  .faq-q:hover { background: var(--surface-2); }
+  .faq-q .arrow {
+    transition: transform 0.22s;
+    color: var(--muted); font-size: 11px;
+    flex-shrink: 0; margin-left: 12px;
+  }
+  .faq-item.open .faq-q .arrow { transform: rotate(180deg); color: var(--accent-end); }
+  .faq-a {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.28s ease;
+  }
+  .faq-a-inner {
+    padding: 0 20px 18px;
+    color: var(--muted); font-size: 14px; line-height: 1.8;
+  }
+  .faq-item.open .faq-a { max-height: 700px; }
+  .faq-a-inner strong { color: var(--text); font-weight: 600; }
+  .faq-a-inner a { color: var(--accent-end); }
+
+  /* ===== 信息块 ===== */
+  .info-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .info-block p { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+  .info-block p:last-child { margin-bottom: 0; }
+  .info-block strong { color: var(--text); }
+
+  /* ===== 状态卡 ===== */
+  .status-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+  }
+  .status-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .status-card .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent-end);
+    box-shadow: 0 0 0 4px rgba(136,180,164,0.2);
+    flex-shrink: 0;
+  }
+  .status-card .s-label { font-size: 12px; color: var(--muted); }
+  .status-card .s-value { font-size: 15px; font-weight: 600; }
+
+  /* ===== Footer ===== */
+  footer {
+    padding: 36px 0 56px;
+    text-align: center;
+    color: var(--muted); font-size: 12.5px;
+  }
+  footer .links { margin-bottom: 12px; }
+  footer .links a { margin: 0 10px; }
+
+  /* ===== Toast ===== */
+  #toast {
+    position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%);
+    background: var(--surface-2); color: var(--text);
+    padding: 11px 22px; border-radius: 10px; font-size: 13px;
+    z-index: 9999; box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    border: 1px solid var(--border);
+    transition: opacity 0.3s;
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 36px 0 28px; }
+    .hero h1 { font-size: 24px; }
+    .feat-grid, .status-grid { grid-template-columns: 1fr; }
+    .contact-bar { flex-direction: column; align-items: flex-start; }
+    h2 { font-size: 17px; }
+    .top-bar { flex-direction: column; gap: 12px; align-items: flex-end; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- 顶部工具栏：语言 + 主题切换 + 颜色 -->
+  <div class="top-bar">
+    <div class="tools" id="langBar"></div>
+    <div class="tools">
+      <button class="btn" id="themeToggle" title="切换深浅色">
+        <span id="themeIcon">◐</span>
+      </button>
+      <div class="theme-picker" id="themePicker">
+        <button class="btn" id="colorBtn" title="主题色">
+          <span style="width:12px;height:12px;border-radius:50%;background:var(--accent-grad);display:inline-block;"></span>
+        </button>
+        <div class="swatches" id="swatches"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="logo-mark">
+      <!-- 毛线球 Logo -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round">
+        <circle cx="12" cy="12" r="9" fill="none"/>
+        <path d="M5.5 8 C8 6, 13 6, 18.5 8" fill="none"/>
+        <path d="M5.5 12 C8 10, 13 10, 18.5 12" fill="none"/>
+        <path d="M5.5 16 C8 14, 13 14, 18.5 16" fill="none"/>
+        <path d="M9 4 L10 7" fill="none"/>
+        <path d="M15 17 L16 20" fill="none"/>
+      </svg>
+    </div>
+    <h1 data-i18n="heroTitle"></h1>
+    <p data-i18n="heroDesc"></p>
+    <div class="contact-bar">
+      <div>
+        <div class="label" data-i18n="contactLabel"></div>
+        <div class="email">shamoshuisheng@163.com</div>
+      </div>
+      <a href="mailto:shamoshuisheng@163.com" class="contact-btn" data-i18n="contactBtn"></a>
+    </div>
+  </div>
+
+  <!-- 功能指引 -->
+  <section>
+    <h2 data-i18n="featTitle"></h2>
+    <div class="feat-grid" id="featGrid"></div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <h2 data-i18n="faqTitle"></h2>
+    <div id="faqList"></div>
+  </section>
+
+  <!-- 订阅 & 状态 -->
+  <section>
+    <h2 data-i18n="subTitle"></h2>
+    <div class="info-block" id="subBlock"></div>
+    <div style="height:14px"></div>
+    <div class="status-grid" id="statusGrid"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="links">
+      <a href="#" onclick="showToast('请替换为隐私政策链接');return false;" data-i18n="privacy"></a>
+      <a href="#" onclick="showToast('请替换为服务条款链接');return false;" data-i18n="terms"></a>
+      <a href="mailto:shamoshuisheng@163.com" data-i18n="contactUs"></a>
+    </div>
+    <div>© 2026 YarnStash. All rights reserved.</div>
+  </footer>
+
+</div>
+
+<script>
+var EMAIL = "shamoshuisheng@163.com";
+
+// ===== 主题色预设 =====
+var COLOR_PRESETS = [
+  { name: "薄荷绿", start: "#547C6E", end: "#88B4A4" },
+  { name: "玫瑰粉", start: "#C45C6E", end: "#E895A5" },
+  { name: "雾霾蓝", start: "#4A6FA5", end: "#8BAED6" },
+  { name: "暖焦糖", start: "#B5764B", end: "#E0A878" },
+  { name: "薰衣草", start: "#7C6BBF", end: "#B4A6E0" },
+  { name: "墨青绿", start: "#3D6B5A", end: "#72A890" },
+];
+
+// ===== 多语言 =====
+var I18N = {};
+
+I18N["zh-CN"] = {
+  langName: "简体中文",
+  heroTitle: "YarnStash 技术支持",
+  heroDesc: "毛线库存、编织项目、图案工具一站式管理。让每一团毛线都物尽其用。",
+  contactLabel: "遇到问题？发邮件给我们",
+  contactBtn: "发送邮件 →",
+  featTitle: "快速上手",
+  feats: [
+    { icon: "yarn", title: "毛线库存管理", desc: "首页 → 点击「+」添加毛线 → 输入品牌/色号/规格 → 保存。支持批量导入、拍照识别。" },
+    { icon: "project", title: "编织项目追踪", desc: "项目库 → 新建项目 → 关联毛线 → 添加进度日志。自动计算剩余用量和预计完成日期。" },
+    { icon: "pattern", title: "图案与图解", desc: "图案库 → 搜索关键词 / 分类浏览 → 收藏到项目。支持 PDF 图解查看与行计数标记。" },
+    { icon: "calc", title: "计算器工具", desc: "工具盒 → 密度计算 / 用线估算 / 尺寸换算。所有计算本地完成，无需联网。" }
+  ],
+  faqTitle: "常见问题",
+  faqs: [
+    { q: "我的毛线数据会同步到云端吗？", a: "<strong>可选开启。</strong>YarnStash 默认数据存储在本地 iCloud（通过 CloudKit），不会经过第三方服务器。你也可以在设置中关闭 iCloud 同步，完全离线使用。" },
+    { q: "如何从免费版升级到 Pro？", a: "打开 App → 底部「我的」 → 「升级 Pro」 → 选择方案 → 通过 Apple ID 付费。购买成功后，Pro 功能会在当前设备自动解锁；如未立即生效，请在「升级 Pro」页点击「恢复购买」。" },
+    { q: "备份数据到新设备？", a: "两种方式：<br>1. <strong>iCloud 同步</strong>：新设备登录同一 Apple ID → 打开 YarnStash → 数据自动恢复（需旧设备已开启 iCloud 同步）；<br>2. <strong>导出文件</strong>：旧设备「设置 → 导出数据」→ 选择格式 → AirDrop 发送到新设备 → 导入。" },
+    { q: "图案库搜索不到想要的图解？", a: "请尝试：<br>1. 使用英文关键词搜索（多数图案源自 Ravelry）；<br>2. 缩短关键词，如「scarf」代替「knit scarf pattern free」；<br>3. 在「我的 → 设置 → 图案源」中添加额外图解站点。" },
+    { q: "计数器 / 行计数器如何使用？", a: "打开工具盒 → 「行计数器」→ 点击屏幕计数；支持保存多个项目独立计数，锁屏显示小组件。计数数据自动保存，退出 App 不丢失。" },
+    { q: "Pro 订阅如何退款？", a: "订阅通过 Apple 官方渠道处理：<br>前往 <a href='https://reportaproblem.apple.com' target='_blank'>reportaproblem.apple.com</a> → 登录 Apple ID → 找到对应订阅 → 申请退款。Apple 通常 48 小时内处理。" },
+    { q: "如何取消自动续订？", a: "iPhone 打开 <strong>设置 → 你的 Apple ID → 订阅</strong> → 找到 YarnStash → 取消订阅。取消后当前周期内仍可使用全部 Pro 功能。" },
+    { q: "App 占用存储越来越大怎么办？", a: "毛线照片是主要占用。可在「设置 → 存储管理」中：<br>· 压缩已有图片；<br>· 删除旧项目的历史日志照片；<br>· 将原图导出到「文件」后删除 App 内副本。" }
+  ],
+  subTitle: "订阅与权限",
+  subLines: [
+    "<strong>免费版：</strong>最多管理 20 团毛线、3 个项目；基础图案库访问；每日计算器有限次数。",
+    "<strong>Pro 订阅：</strong>无限毛线与项目；全部 12 种计算器；云同步备份；批量导入导出；专属统计报表。",
+    "<strong>自动续订：</strong>订阅到期前 24 小时自动扣费，可随时在 Apple ID 设置中取消。",
+    "<strong>隐私政策：</strong><a href='#' onclick=\"showToast('请替换为隐私政策链接');return false;\">查看完整隐私政策</a>"
+  ],
+  statusTitle: "App 状态",
+  statuses: [
+    { label: "数据存储", value: "iCloud / 本地" },
+    { label: "Pro 功能", value: "已就绪" },
+    { label: "图案库", value: "10,000+ 图解" },
+    { label: "支持系统", value: "iOS 16+" }
+  ],
+  privacy: "隐私政策",
+  terms: "服务条款",
+  contactUs: "联系我们"
+};
+
+I18N["en"] = {
+  langName: "English",
+  heroTitle: "YarnStash Support",
+  heroDesc: "All-in-one manager for your yarn stash, knitting projects and patterns. Make every skein count.",
+  contactLabel: "Need help? Email us",
+  contactBtn: "Send Email →",
+  featTitle: "Quick Guides",
+  feats: [
+    { icon: "yarn", title: "Yarn Stash Manager", desc: "Home → tap「+」→ enter brand/color/spec → save. Batch import & photo recognition supported." },
+    { icon: "project", title: "Project Tracker", desc: "Projects → new project → link yarns → add progress logs. Auto-calculates remaining yardage & ETA." },
+    { icon: "pattern", title: "Pattern Library", desc: "Patterns → search / browse by category → save to project. PDF charts & row counter markers." },
+    { icon: "calc", title: "Calculator Tools", desc: "Toolbox → gauge calc / yardage estimator / size converter. All local, no network needed." }
+  ],
+  faqTitle: "FAQ",
+  faqs: [
+    { q: "Is my yarn data synced to the cloud?", a: "<strong>Optional.</strong> YarnStash uses iCloud (CloudKit) by default — no third-party servers. You can disable iCloud in Settings for fully offline use." },
+    { q: "How to upgrade to Pro?", a: "Open app → Me →「Go Pro」→ pick a plan → pay via Apple ID. Pro unlocks automatically; if not, tap「Restore Purchases」." },
+    { q: "How to transfer data to a new device?", a: "Two ways：<br>1. <strong>iCloud</strong>：sign in with the same Apple ID on new device → data restores automatically.<br>2. <strong>Export</strong>：old device → Settings → Export → AirDrop to new device → Import." },
+    { q: "Can't find a pattern in the library?", a: "Try：<br>1. English keywords (most patterns come from Ravelry)；<br>2. Shorter terms, e.g.「scarf」not「knit scarf pattern free」；<br>3. Add pattern sources in「Settings → Pattern Sources」." },
+    { q: "How does the row counter work?", a: "Toolbox → Row Counter → tap to count. Multiple independent counters per project; lock-screen widget available. Counts auto-save." },
+    { q: "How do I get a refund for Pro?", a: "Subscriptions are handled by Apple：<br>Go to <a href='https://reportaproblem.apple.com' target='_blank'>reportaproblem.apple.com</a> → sign in → find subscription → request refund. Apple responds within 48h." },
+    { q: "How do I cancel auto-renewal?", a: "On iPhone go to <strong>Settings → your Apple ID → Subscriptions</strong> → find YarnStash → Cancel. Pro features stay until end of current period." },
+    { q: "App storage keeps growing?", a: "Yarn photos are the main contributor. In「Settings → Storage」you can：<br>· Compress existing images；<br>· Delete old project log photos；<br>· Export originals to Files then remove in-app copies." }
+  ],
+  subTitle: "Subscription & Access",
+  subLines: [
+    "<strong>Free:</strong> Up to 20 yarns, 3 projects; basic pattern access; limited daily calculator usage.",
+    "<strong>Pro:</strong> Unlimited yarns & projects; all 12 calculators; cloud sync; bulk import/export; premium statistics.",
+    "<strong>Auto-renewal:</strong> Charged 24h before period ends. Cancel anytime in Apple ID settings.",
+    "<strong>Privacy Policy:</strong><a href='#' onclick=\"showToast('Replace with privacy policy URL');return false;\">View full policy</a>"
+  ],
+  statusTitle: "App Status",
+  statuses: [
+    { label: "Storage", value: "iCloud / Local" },
+    { label: "Pro Features", value: "Ready" },
+    { label: "Patterns", value: "10,000+" },
+    { label: "Supported OS", value: "iOS 16+" }
+  ],
+  privacy: "Privacy",
+  terms: "Terms",
+  contactUs: "Contact"
+};
+
+I18N["zh-TW"] = {
+  langName: "繁體中文",
+  heroTitle: "YarnStash 技術支援",
+  heroDesc: "毛線庫存、編織專案、圖解工具一站式管理。讓每團毛線都物盡其用。",
+  contactLabel: "遇到問題？寄信給我們",
+  contactBtn: "寄信 →",
+  featTitle: "快速上手",
+  feats: [
+    { icon: "yarn", title: "毛線庫存管理", desc: "首頁 → 點「+」新增毛線 → 輸入品牌/色號/規格 → 儲存。支援批次匯入、拍照辨識。" },
+    { icon: "project", title: "編織專案追蹤", desc: "專案庫 → 新建專案 → 關聯毛線 → 新增進度日誌。自動計算剩餘用量與預計完成日期。" },
+    { icon: "pattern", title: "圖案與圖解", desc: "圖案庫 → 關鍵字搜尋 / 分類瀏覽 → 收藏到專案。支援 PDF 圖解查看與行計數標記。" },
+    { icon: "calc", title: "計算器工具", desc: "工具箱 → 密度計算 / 用線估算 / 尺寸換算。所有計算本地完成，無需聯網。" }
+  ],
+  faqTitle: "常見問題",
+  faqs: [
+    { q: "我的毛線資料會同步到雲端嗎？", a: "<strong>可選開啟。</strong>YarnStash 預設資料儲存在本機 iCloud（透過 CloudKit），不經過第三方伺服器。也可在設定中關閉 iCloud 同步，完全離線使用。" },
+    { q: "如何從免費版升級 Pro？", a: "開啟 App → 底部「我的」→「升級 Pro」→ 選擇方案 → 透過 Apple ID 付費。購買成功後 Pro 功能自動解鎖；如未生效，請點「恢復購買」。" },
+    { q: "如何備份到新裝置？", a: "兩種方式：<br>1. <strong>iCloud 同步</strong>：新裝置登入同一 Apple ID → 開啟 YarnStash → 自動恢復；<br>2. <strong>匯出檔案</strong>：舊裝置「設定 → 匯出資料」→ AirDrop 傳送到新裝置 → 匯入。" },
+    { q: "Pro 訂閱如何退款？", a: "訂閱透過 Apple 處理：<br><a href='https://reportaproblem.apple.com' target='_blank'>reportaproblem.apple.com</a> → 登入 → 找到訂閱 → 申請退款。" },
+    { q: "如何取消自動續訂？", a: "iPhone <strong>設定 → Apple ID → 訂閱</strong> → YarnStash → 取消訂閱。當前週期仍可使用 Pro。" }
+  ],
+  subTitle: "訂閱與權限",
+  subLines: [
+    "<strong>免費版：</strong>最多 20 團毛線、3 個專案；基礎圖案庫；計算器每日有限次數。",
+    "<strong>Pro：</strong>無限毛線與專案；全部 12 種計算器；雲端備份；批次匯入匯出；統計報表。",
+    "<strong>隱私政策：</strong><a href='#' onclick=\"showToast('請替換為隱私權政策連結');return false;\">檢視完整政策</a>"
+  ],
+  statusTitle: "App 狀態",
+  statuses: [
+    { label: "儲存方式", value: "iCloud / 本機" },
+    { label: "Pro 功能", value: "就緒" },
+    { label: "圖解數量", value: "10,000+" },
+    { label: "支援系統", value: "iOS 16+" }
+  ],
+  privacy: "隱私權",
+  terms: "服務條款",
+  contactUs: "聯絡我們"
+};
+
+I18N["ja"] = {
+  langName: "日本語",
+  heroTitle: "YarnStash サポート",
+  heroDesc: "毛糸在庫、編み物プロジェクト、パターンを一括管理。すべての毛糸を無駄なく使いましょう。",
+  contactLabel: "お困りですか？メールください",
+  contactBtn: "メールを送る →",
+  featTitle: "クイックガイド",
+  feats: [
+    { icon: "yarn", title: "毛糸在庫管理", desc: "ホーム → 「+」をタップ → ブランド/色番号/規格を入力 → 保存。一括登録・写真認識対応。" },
+    { icon: "project", title: "プロジェクト管理", desc: "プロジェクト → 新規作成 → 毛糸を紐付け → 進捗記録。残量と完了予定日を自動計算。" },
+    { icon: "pattern", title: "パターン図書館", desc: "パターン → 検索/カテゴリ別閲覧 → プロジェクトに追加。PDFチャートとカウンターマーカー対応。" },
+    { icon: "calc", title: "計算ツール", desc: "ツールボックス → ゲージ計算 / 毛糸量見積り / サイズ換算。すべてローカル処理。" }
+  ],
+  faqTitle: "よくある質問",
+  faqs: [
+    { q: "データはクラウドに同期されますか？", a: "<strong>任意。</strong>YarnStash は既定で iCloud (CloudKit) を使用。第三者サーバーは経由しません。設定で無効化して完全オフラインも可能。" },
+    { q: "Pro のアップグレード方法は？", a: "アプリ → マイページ → 「Proにアップグレード」→ プラン選択 → Apple ID で支払い。自動解除されない場合は「購入を復元」をタップ。" },
+    { q: "Pro の返金はどうすればいいですか？", a: "サブスクは Apple 経由：<br><a href='https://reportaproblem.apple.com' target='_blank'>reportaproblem.apple.com</a> → ログイン → 該当サブスク → 返金請求。" },
+    { q: "自動更新をキャンセルするには？", a: "iPhone <strong>設定 → Apple ID → サブスクリプション</strong> → YarnStash → キャンセル。期間終了まで Pro 機能は使えます。" }
+  ],
+  subTitle: "サブスクリプション",
+  subLines: [
+    "<strong>無料版：</strong>最大 20 糸、3 プロジェクト；基本パターン；計算ツールは1日の回数制限あり。",
+    "<strong>Pro：</strong>無制限；全12種計算ツール；クラウド同期；一括入出力；プレミアム統計。",
+    "<strong>プライバシー：</strong><a href='#' onclick=\"showToast('プライバシーURL');return false;\">全文を見る</a>"
+  ],
+  statusTitle: "ステータス",
+  statuses: [
+    { label: "保存先", value: "iCloud / ローカル" },
+    { label: "Pro", value: "対応" },
+    { label: "パターン数", value: "10,000+" },
+    { label: "対応OS", value: "iOS 16+" }
+  ],
+  privacy: "プライバシー",
+  terms: "利用規約",
+  contactUs: "お問い合わせ"
+};
+
+// ===== SVG 图标 =====
+var ICONS = {
+  yarn: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M6 9 C8 7, 16 7, 18 9"/><path d="M6 12 C8 10, 16 10, 18 12"/><path d="M6 15 C8 13, 16 13, 18 15"/></svg>',
+  project: '<svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 13h6M9 17h4"/></svg>',
+  pattern: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h4v4H7zM13 13h4v4h-4zM7 17h4M13 7h4"/></svg>',
+  calc: '<svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><rect x="7" y="6" width="10" height="3"/><circle cx="8.5" cy="13" r="1"/><circle cx="12" cy="13" r="1"/><circle cx="15.5" cy="13" r="1"/><circle cx="8.5" cy="17" r="1"/><circle cx="12" cy="17" r="1"/><circle cx="15.5" cy="17" r="1"/></svg>'
+};
+
+var LANGS = ["zh-CN", "zh-TW", "en", "ja"];
+var currentLang = "zh-CN";
+var currentTheme = "dark";
+
+// ===== 语言检测 =====
+function detectLang() {
+  var nav = (navigator.language || "en").toLowerCase();
+  if (nav.indexOf("zh") === 0) {
+    if (nav.indexOf("tw") > -1 || nav.indexOf("hk") > -1) return "zh-TW";
+    return "zh-CN";
+  }
+  for (var i = 0; i < LANGS.length; i++) {
+    if (nav.indexOf(LANGS[i]) === 0) return LANGS[i];
+  }
+  return "en";
+}
+
+// ===== 应用语言 =====
+function applyLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang === "zh-CN" ? "zh-CN" : lang;
+  var t = I18N[lang];
+
+  document.querySelectorAll("[data-i18n]").forEach(function(el) {
+    var key = el.getAttribute("data-i18n");
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+
+  // features
+  var fg = document.getElementById("featGrid");
+  fg.innerHTML = "";
+  t.feats.forEach(function(f) {
+    var div = document.createElement("div");
+    div.className = "feat";
+    div.innerHTML = '<div class="icon">' + ICONS[f.icon] + '</div><h3></h3><p></p>';
+    div.querySelector("h3").textContent = f.title;
+    div.querySelector("p").textContent = f.desc;
+    fg.appendChild(div);
+  });
+
+  // FAQ
+  var fl = document.getElementById("faqList");
+  fl.innerHTML = "";
+  t.faqs.forEach(function(f) {
+    var item = document.createElement("div");
+    item.className = "faq-item";
+    item.innerHTML = '<div class="faq-q" onclick="toggleFaq(this)"><span class="qtext"></span><span class="arrow">▼</span></div><div class="faq-a"><div class="faq-a-inner"></div></div>';
+    item.querySelector(".qtext").textContent = f.q;
+    item.querySelector(".faq-a-inner").innerHTML = f.a;
+    fl.appendChild(item);
+  });
+
+  // subscription
+  var sb = document.getElementById("subBlock");
+  sb.innerHTML = "";
+  t.subLines.forEach(function(line) {
+    var p = document.createElement("p");
+    p.innerHTML = line;
+    sb.appendChild(p);
+  });
+
+  // status
+  var sg = document.getElementById("statusGrid");
+  sg.innerHTML = "";
+  t.statuses.forEach(function(s) {
+    var card = document.createElement("div");
+    card.className = "status-card";
+    card.innerHTML = '<div class="dot"></div><div><div class="s-label"></div><div class="s-value"></div></div>';
+    card.querySelector(".s-label").textContent = s.label;
+    card.querySelector(".s-value").textContent = s.value;
+    sg.appendChild(card);
+  });
+
+  // lang buttons
+  var lb = document.getElementById("langBar");
+  lb.innerHTML = "";
+  LANGS.forEach(function(l) {
+    var b = document.createElement("button");
+    b.className = "btn" + (l === lang ? " active" : "");
+    b.textContent = I18N[l].langName;
+    b.onclick = function() { applyLang(l); };
+    lb.appendChild(b);
+  });
+
+  document.title = "YarnStash · " + t.heroTitle;
+}
+
+// ===== 主题切换 =====
+function toggleTheme() {
+  if (currentTheme === "dark") {
+    document.documentElement.setAttribute("data-theme", "light");
+    currentTheme = "light";
+    document.getElementById("themeIcon").textContent = "☀";
+  } else {
+    document.documentElement.removeAttribute("data-theme");
+    currentTheme = "dark";
+    document.getElementById("themeIcon").textContent = "◐";
+  }
+}
+
+// ===== 颜色切换 =====
+function applyColors(preset) {
+  var root = document.documentElement;
+  root.style.setProperty("--accent-start", preset.start);
+  root.style.setProperty("--accent-end", preset.end);
+  // 更新发光颜色
+  if (currentTheme === "dark") {
+    root.style.setProperty("--accent-glow", hexToRgba(preset.start, 0.35));
+  } else {
+    root.style.setProperty("--accent-glow", hexToRgba(preset.start, 0.15));
+  }
+  // 更新 active 状态
+  document.querySelectorAll(".swatch").forEach(function(s) {
+    s.classList.toggle("active", s.dataset.start === preset.start);
+  });
+}
+
+function hexToRgba(hex, alpha) {
+  var r = parseInt(hex.slice(1,3), 16);
+  var g = parseInt(hex.slice(3,5), 16);
+  var b = parseInt(hex.slice(5,7), 16);
+  return "rgba(" + r + "," + g + "," + b + "," + alpha + ")";
+}
+
+function buildSwatches() {
+  var container = document.getElementById("swatches");
+  container.innerHTML = "";
+  COLOR_PRESETS.forEach(function(p) {
+    var s = document.createElement("div");
+    s.className = "swatch";
+    s.style.background = "linear-gradient(135deg, " + p.start + ", " + p.end + ")";
+    s.dataset.start = p.start;
+    s.title = p.name;
+    if (p.start === "#547C6E") s.classList.add("active");
+    s.onclick = function() {
+      applyColors(p);
+      showToast("已切换主题色：" + p.name);
+      document.getElementById("themePicker").classList.remove("open");
+    };
+    container.appendChild(s);
+  });
+}
+
+// ===== FAQ 交互 =====
+function toggleFaq(el) {
+  el.parentElement.classList.toggle("open");
+}
+
+// ===== Toast =====
+function showToast(msg) {
+  var t = document.getElementById("toast");
+  if (!t) {
+    t = document.createElement("div");
+    t.id = "toast";
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.opacity = "1";
+  clearTimeout(t._timer);
+  t._timer = setTimeout(function(){ t.style.opacity = "0"; }, 2200);
+}
+
+// ===== 初始化 =====
+document.getElementById("themeToggle").addEventListener("click", toggleTheme);
+document.getElementById("colorBtn").addEventListener("click", function(e) {
+  e.stopPropagation();
+  document.getElementById("themePicker").classList.toggle("open");
+});
+document.addEventListener("click", function() {
+  document.getElementById("themePicker").classList.remove("open");
+});
+
+buildSwatches();
+applyLang(detectLang());
+</script>
+
+</body>
+</html>
