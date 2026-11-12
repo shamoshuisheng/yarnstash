@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -370,7 +369,7 @@
   <!-- Footer -->
   <footer>
     <div class="links">
-      <a href="#" onclick="showToast('请替换为隐私政策链接');return false;" data-i18n="privacy"></a>
+      <a href="https://shamoshuisheng.github.io/privacy" target="_blank" data-i18n="privacy"></a>
       <a href="#" onclick="showToast('请替换为服务条款链接');return false;" data-i18n="terms"></a>
       <a href="mailto:shamoshuisheng@163.com" data-i18n="contactUs"></a>
     </div>
@@ -424,7 +423,7 @@ I18N["zh-CN"] = {
     "<strong>免费版：</strong>最多管理 20 团毛线、3 个项目；基础图案库访问；每日计算器有限次数。",
     "<strong>Pro 订阅：</strong>无限毛线与项目；全部 12 种计算器；云同步备份；批量导入导出；专属统计报表。",
     "<strong>自动续订：</strong>订阅到期前 24 小时自动扣费，可随时在 Apple ID 设置中取消。",
-    "<strong>隐私政策：</strong><a href='#' onclick=\"showToast('请替换为隐私政策链接');return false;\">查看完整隐私政策</a>"
+    "<strong>隐私政策：</strong><a href='https://shamoshuisheng.github.io/privacy' target='_blank'>查看完整隐私政策</a>"
   ],
   statusTitle: "App 状态",
   statuses: [
@@ -467,7 +466,7 @@ I18N["en"] = {
     "<strong>Free:</strong> Up to 20 yarns, 3 projects; basic pattern access; limited daily calculator usage.",
     "<strong>Pro:</strong> Unlimited yarns & projects; all 12 calculators; cloud sync; bulk import/export; premium statistics.",
     "<strong>Auto-renewal:</strong> Charged 24h before period ends. Cancel anytime in Apple ID settings.",
-    "<strong>Privacy Policy:</strong><a href='#' onclick=\"showToast('Replace with privacy policy URL');return false;\">View full policy</a>"
+    "<strong>Privacy Policy:</strong><a href='https://shamoshuisheng.github.io/privacy' target='_blank'>View full policy</a>"
   ],
   statusTitle: "App Status",
   statuses: [
@@ -506,7 +505,7 @@ I18N["zh-TW"] = {
   subLines: [
     "<strong>免費版：</strong>最多 20 團毛線、3 個專案；基礎圖案庫；計算器每日有限次數。",
     "<strong>Pro：</strong>無限毛線與專案；全部 12 種計算器；雲端備份；批次匯入匯出；統計報表。",
-    "<strong>隱私政策：</strong><a href='#' onclick=\"showToast('請替換為隱私權政策連結');return false;\">檢視完整政策</a>"
+    "<strong>隱私政策：</strong><a href='https://shamoshuisheng.github.io/privacy' target='_blank'>檢視完整政策</a>"
   ],
   statusTitle: "App 狀態",
   statuses: [
@@ -544,7 +543,7 @@ I18N["ja"] = {
   subLines: [
     "<strong>無料版：</strong>最大 20 糸、3 プロジェクト；基本パターン；計算ツールは1日の回数制限あり。",
     "<strong>Pro：</strong>無制限；全12種計算ツール；クラウド同期；一括入出力；プレミアム統計。",
-    "<strong>プライバシー：</strong><a href='#' onclick=\"showToast('プライバシーURL');return false;\">全文を見る</a>"
+    "<strong>プライバシー：</strong><a href='https://shamoshuisheng.github.io/privacy' target='_blank'>全文を見る</a>"
   ],
   statusTitle: "ステータス",
   statuses: [
@@ -558,6 +557,129 @@ I18N["ja"] = {
   contactUs: "お問い合わせ"
 };
 
+I18N["ko"] = {
+  langName: "한국어",
+  heroTitle: "YarnStash 지원",
+  heroDesc: "실뭉치 재고, 뜨개 프로젝트, 도안을 한곳에서 관리하세요. 모든 실을 알뜰하게 사용하세요.",
+  contactLabel: "도움이 필요하신가요? 이메일을 보내주세요",
+  contactBtn: "이메일 보내기 →",
+  featTitle: "빠른 가이드",
+  feats: [
+    { icon: "yarn", title: "실뭉치 재고 관리", desc: "홈 → 「+」탭 → 브랜드/색상/규격 입력 → 저장. 일괄 등록·사진 인식 지원." },
+    { icon: "project", title: "프로젝트 추적", desc: "프로젝트 → 새 프로젝트 → 실 연결 → 진행 상황 추가. 남은 실 양과 예상 완료일 자동 계산." },
+    { icon: "pattern", title: "도안 라이브러리", desc: "도안 → 검색 / 카테고리별 탐색 → 프로젝트에 저장. PDF 차트와 행 카운터 마커 지원." },
+    { icon: "calc", title: "계산기 도구", desc: "툴박스 → 게이지 계산 / 실 양 추정 / 사이즈 변환. 모두 로컬 처리, 인터넷 불필요." }
+  ],
+  faqTitle: "자주 묻는 질문",
+  faqs: [
+    { q: "제 실 데이터가 클라우드에 동기화되나요?", a: "<strong>선택 가능.</strong>YarnStash는 기본적으로 iCloud(CloudKit)를 사용하며 제3자 서버를 거치지 않습니다. 설정에서 iCloud 동기화를 끄면 완전 오프라인으로 사용할 수 있습니다." },
+    { q: "Pro로 업그레이드하는 방법?", a: "앱 → 하단「내 정보」→「Pro로 업그레이드」→ 플랜 선택 → Apple ID로 결제. 구매 후 Pro 기능이 자동 해제되지 않으면「구매 복원」을 탭하세요." },
+    { q: "새 기기로 데이터 옮기기", a: "두 가지 방법：<br>1. <strong>iCloud 동기화</strong>：새 기기에서 같은 Apple ID 로그인 → YarnStash 실행 → 자동 복원；<br>2. <strong>파일 내보내기</strong>：구 기기「설정 → 데이터 내보내기」→ AirDrop으로 새 기기로 전송 → 가져오기." },
+    { q: "Pro 구독 환불은?", a: "구독은 Apple을 통해 처리：<br><a href='https://reportaproblem.apple.com' target='_blank'>reportaproblem.apple.com</a> → 로그인 → 해당 구독 → 환불 요청. Apple은 보통 48시간 이내 응답합니다." },
+    { q: "자동 갱신 취소 방법?", a: "iPhone <strong>설정 → Apple ID → 구독</strong> → YarnStash 찾기 → 취소. 현재 결제 기간이 끝날 때까지 Pro 기능을 계속 사용할 수 있습니다." },
+    { q: "앱 저장 공간이 계속 커져요", a: "실 사진이 주요 원인입니다.「설정 → 저장 관리」에서：<br>· 기존 이미지 압축；<br>· 오래된 프로젝트 로그 사진 삭제；<br>· 원본 사진을 파일 앱으로 내보낸 뒤 앱 내 복사본 삭제." }
+  ],
+  subTitle: "구독 및 권한",
+  subLines: [
+    "<strong>무료:</strong> 최대 20개 실뭉치, 3개 프로젝트; 기본 도안 라이브러리; 계산기 일일 사용 제한.",
+    "<strong>Pro:</strong> 무제한 실뭉치와 프로젝트; 전체 12종 계산기; 클라우드 동기화; 일괄 가져오기/내보내기; 프리미엄 통계.",
+    "<strong>자동 갱신:</strong> 기간 종료 24시간 전 자동 결제. Apple ID 설정에서 언제든 취소 가능.",
+    "<strong>개인정보 처리방침:</strong><a href='https://shamoshuisheng.github.io/privacy' target='_blank'>전문 보기</a>"
+  ],
+  statusTitle: "앱 상태",
+  statuses: [
+    { label: "저장 방식", value: "iCloud / 로컬" },
+    { label: "Pro 기능", value: "준비됨" },
+    { label: "도안 수", value: "10,000+" },
+    { label: "지원 OS", value: "iOS 16+" }
+  ],
+  privacy: "개인정보 처리방침",
+  terms: "서비스 약관",
+  contactUs: "문의하기"
+};
+
+I18N["de"] = {
+  langName: "Deutsch",
+  heroTitle: "YarnStash Support",
+  heroDesc: "All-in-One-Verwaltung für Ihr Garnlager, Strickprojekte und Muster. Jedes Knäuel optimal nutzen.",
+  contactLabel: "Brauchen Sie Hilfe? Schreiben Sie uns",
+  contactBtn: "E-Mail senden →",
+  featTitle: "Kurzanleitungen",
+  feats: [
+    { icon: "yarn", title: "Garnlager verwalten", desc: "Startseite → 「+」tippen → Marke/Farbe/Größe eingeben → speichern. Massenimport und Fotoerkennung unterstützt." },
+    { icon: "project", title: "Projekt-Tracker", desc: "Projekte → neues Projekt → Garne verknüpfen → Fortschrittstagebuch. Restgarn und voraussichtliches Enddatum automatisch berechnet." },
+    { icon: "pattern", title: "Muster-Bibliothek", desc: "Muster → suchen / nach Kategorien stöbern → zum Projekt speichern. PDF-Charts und Zeilenmarkierungen." },
+    { icon: "calc", title: "Rechner-Werkzeuge", desc: "Werkzeugkasten → Maschenprobe berechnen / Garnmenge schätzen / Größe umrechnen. Alles lokal, kein Netz nötig." }
+  ],
+  faqTitle: "Häufige Fragen",
+  faqs: [
+    { q: "Werden meine Garn-Daten in die Cloud synchronisiert?", a: "<strong>Optional.</strong> YarnStash nutzt standardmäßig iCloud (CloudKit) — keine Drittserver. Sie können iCloud in den Einstellungen deaktivieren, um völlig offline zu arbeiten." },
+    { q: "Wie upgrade ich auf Pro?", a: "App öffnen → 「Mein」→「Pro werden」→ Plan wählen → per Apple ID bezahlen. Pro wird automatisch freigeschaltet; falls nicht,「Käufe wiederherstellen」tippen." },
+    { q: "Daten auf neues Gerät übertragen?", a: "Zwei Möglichkeiten：<br>1. <strong>iCloud</strong>：auf neuem Gerät mit derselben Apple ID anmelden → Daten werden automatisch wiederhergestellt；<br>2. <strong>Export</strong>：altes Gerät → Einstellungen → Export → AirDrop zum neuen Gerät → Import." },
+    { q: "Pro-Abo zurückerstattet bekommen?", a: "Abonnements werden von Apple verwaltet：<br>Gehen Sie auf <a href='https://reportaproblem.apple.com' target='_blank'>reportaproblem.apple.com</a> → anmelden → Abonnement finden → Rückerstattung beantragen. Apple antwortet meist innerhalb 48 Stunden." },
+    { q: "Automatische Verlängerung kündigen?", a: "Auf dem iPhone gehen Sie zu <strong>Einstellungen → Ihre Apple ID → Abonnements</strong> → YarnStash finden → kündigen. Pro-Funktionen bleiben bis zum Ende des aktuellen Zeitraums aktiv." },
+    { q: "App-Speicher wird immer größer?", a: "Garnfotos sind der Hauptgrund. In「Einstellungen → Speicher」können Sie：<br>· Vorhandene Bilder komprimieren；<br>· Alte Projekt-Log-Fotos löschen；<br>· Originalfotos in Dateien exportieren, dann App-Kopien entfernen." }
+  ],
+  subTitle: "Abo & Zugriff",
+  subLines: [
+    "<strong>Kostenlos:</strong> Bis zu 20 Garne, 3 Projekte; einfache Musterbibliothek; begrenzte tägliche Rechner-Nutzung.",
+    "<strong>Pro:</strong> Unbegrenzt Garne & Projekte; alle 12 Rechner; Cloud-Sync; Massenimport/-export; Premium-Statistiken.",
+    "<strong>Automatische Verlängerung:</strong> 24 Stunden vor Ende des Zeitraums belastet. Jederzeit in Apple ID-Einstellungen kündbar.",
+    "<strong>Datenschutz:</strong><a href='https://shamoshuisheng.github.io/privacy' target='_blank'>Vollständige Datenschutzerklärung</a>"
+  ],
+  statusTitle: "App-Status",
+  statuses: [
+    { label: "Speicherung", value: "iCloud / Lokal" },
+    { label: "Pro-Funktionen", value: "Bereit" },
+    { label: "Muster", value: "10.000+" },
+    { label: "Unterstütztes OS", value: "iOS 16+" }
+  ],
+  privacy: "Datenschutz",
+  terms: "Nutzungsbedingungen",
+  contactUs: "Kontakt"
+};
+
+I18N["fr"] = {
+  langName: "Français",
+  heroTitle: "Support YarnStash",
+  heroDesc: "Gestion tout-en-un de votre stock de laine, projets de tricot et patrons. Utilisez chaque pelote à bon escient.",
+  contactLabel: "Besoin d'aide ? Écrivez-nous",
+  contactBtn: "Envoyer un e-mail →",
+  featTitle: "Guides rapides",
+  feats: [
+    { icon: "yarn", title: "Gérer son stock de laine", desc: "Accueil → 「+」taper → saisir marque/couleur/spécifications → enregistrer. Import en masse et reconnaissance photo." },
+    { icon: "project", title: "Suivi de projet", desc: "Projets → nouveau projet → lier les laines → ajouter un journal de progression. Calcul automatique du reste et de la date estimée." },
+    { icon: "pattern", title: "Bibliothèque de patrons", desc: "Patrons → rechercher / parcourir par catégorie → enregistrer au projet. Graphiques PDF et marqueurs de rangée." },
+    { icon: "calc", title: "Outils calcul", desc: "Boîte à outils → calcul de jauge / estimation de laine / conversion de taille. Tout local, pas de connexion nécessaire." }
+  ],
+  faqTitle: "Questions fréquentes",
+  faqs: [
+    { q: "Mes données de laine sont-elles synchronisées en cloud ?", a: "<strong>Optionnel.</strong> YarnStash utilise par défaut iCloud (CloudKit) — aucun serveur tiers. Vous pouvez désactiver iCloud dans les réglages pour un usage entièrement hors ligne." },
+    { q: "Comment passer à Pro ?", a: "Ouvrez l'app → 「Moi」→「Passer à Pro」→ choisissez un plan → payez via Apple ID. Pro se déverrouille automatiquement; sinon, tapez「Restaurer les achats」." },
+    { q: "Transférer les données vers un nouvel appareil ?", a: "Deux méthodes：<br>1. <strong>iCloud</strong>：connectez-vous avec le même Apple ID sur le nouvel appareil → restauration automatique；<br>2. <strong>Export</strong>：ancien appareil → Réglages → Exporter → AirDrop vers le nouvel appareil → Importer." },
+    { q: "Comment obtenir un remboursement Pro ?", a: "Les abonnements sont gérés par Apple：<br>Allez sur <a href='https://reportaproblem.apple.com' target='_blank'>reportaproblem.apple.com</a> → connectez-vous → trouvez l'abonnement → demandez un remboursement. Apple répond généralement sous 48 h." },
+    { q: "Comment résilier le renouvellement automatique ?", a: "Sur iPhone, allez dans <strong>Réglages → votre Apple ID → Abonnements</strong> → trouvez YarnStash → Résilier. Les fonctionnalités Pro restent actives jusqu'à la fin de la période en cours." },
+    { q: "Le stockage de l'app ne cesse de grossir ?", a: "Les photos de laine sont la principale cause. Dans「Réglages → Stockage」vous pouvez：<br>· Compresser les images existantes；<br>· Supprimer les anciennes photos de journal de projet；<br>· Exporter les photos originales dans Fichiers puis supprimer les copies dans l'app." }
+  ],
+  subTitle: "Abonnement & accès",
+  subLines: [
+    "<strong>Gratuit :</strong> Jusqu'à 20 pelotes, 3 projets; accès basic aux patrons; usage quotidien limité des calculatrices.",
+    "<strong>Pro :</strong> Pelotes et projets illimités; les 12 calculatrices; synchro cloud; import/export en masse; statistiques premium.",
+    "<strong>Renouvellement auto :</strong> Facturé 24 h avant la fin de chaque période. Résiliable à tout moment dans les réglages Apple ID.",
+    "<strong>Politique de confidentialité :</strong><a href='https://shamoshuisheng.github.io/privacy' target='_blank'>Voir la politique complète</a>"
+  ],
+  statusTitle: "Statut de l'app",
+  statuses: [
+    { label: "Stockage", value: "iCloud / Local" },
+    { label: "Fonctions Pro", value: "Prêtes" },
+    { label: "Patrons", value: "10 000+" },
+    { label: "OS supporté", value: "iOS 16+" }
+  ],
+  privacy: "Confidentialité",
+  terms: "Conditions",
+  contactUs: "Contact"
+};
+
 // ===== SVG 图标 =====
 var ICONS = {
   yarn: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M6 9 C8 7, 16 7, 18 9"/><path d="M6 12 C8 10, 16 10, 18 12"/><path d="M6 15 C8 13, 16 13, 18 15"/></svg>',
@@ -566,7 +688,7 @@ var ICONS = {
   calc: '<svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><rect x="7" y="6" width="10" height="3"/><circle cx="8.5" cy="13" r="1"/><circle cx="12" cy="13" r="1"/><circle cx="15.5" cy="13" r="1"/><circle cx="8.5" cy="17" r="1"/><circle cx="12" cy="17" r="1"/><circle cx="15.5" cy="17" r="1"/></svg>'
 };
 
-var LANGS = ["zh-CN", "zh-TW", "en", "ja"];
+var LANGS = ["zh-CN", "zh-TW", "en", "ja", "ko", "de", "fr"];
 var currentLang = "zh-CN";
 var currentTheme = "dark";
 
