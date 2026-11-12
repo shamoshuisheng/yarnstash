@@ -404,15 +404,15 @@ I18N["zh-CN"] = {
   feats: [
     { icon: "yarn", title: "毛线库存管理", desc: "首页 → 点击「+」添加毛线 → 输入品牌/色号/规格 → 保存。支持批量导入、拍照识别。" },
     { icon: "project", title: "编织项目追踪", desc: "项目库 → 新建项目 → 关联毛线 → 添加进度日志。自动计算剩余用量和预计完成日期。" },
-    { icon: "pattern", title: "图案与图解", desc: "图案库 → 搜索关键词 / 分类浏览 → 收藏到项目。支持 PDF 图解查看与行计数标记。" },
-    { icon: "calc", title: "计算器工具", desc: "工具盒 → 密度计算 / 用线估算 / 尺寸换算。所有计算本地完成，无需联网。" }
+    { icon: "pattern", title: "图解本地管理", desc: "图案库 → 从「文件」App 导入 PDF / 图片图解 → 本地预览 → 关联到编织项目。" },
+    { icon: "calc", title: "工具盒", desc: "计算器、统计报表、配色查找、行计数器、密度测量、用线估算。共 6 种工具，全部本地运行。" }
   ],
   faqTitle: "常见问题",
   faqs: [
     { q: "我的毛线数据会同步到云端吗？", a: "<strong>可选开启。</strong>YarnStash 默认数据存储在本地 iCloud（通过 CloudKit），不会经过第三方服务器。你也可以在设置中关闭 iCloud 同步，完全离线使用。" },
     { q: "如何从免费版升级到 Pro？", a: "打开 App → 底部「我的」 → 「升级 Pro」 → 选择方案 → 通过 Apple ID 付费。购买成功后，Pro 功能会在当前设备自动解锁；如未立即生效，请在「升级 Pro」页点击「恢复购买」。" },
     { q: "备份数据到新设备？", a: "两种方式：<br>1. <strong>iCloud 同步</strong>：新设备登录同一 Apple ID → 打开 YarnStash → 数据自动恢复（需旧设备已开启 iCloud 同步）；<br>2. <strong>导出文件</strong>：旧设备「设置 → 导出数据」→ 选择格式 → AirDrop 发送到新设备 → 导入。" },
-    { q: "图案库搜索不到想要的图解？", a: "请尝试：<br>1. 使用英文关键词搜索（多数图案源自 Ravelry）；<br>2. 缩短关键词，如「scarf」代替「knit scarf pattern free」；<br>3. 在「我的 → 设置 → 图案源」中添加额外图解站点。" },
+    { q: "如何导入自己的编织图解？", a: "打开 App → 首页「图案库」→ 点击右上角「+」→ 选择「文件」App → 支持 <strong>PDF</strong> 和 <strong>图片（PNG/JPG）</strong> 两种格式。导入后可在项目详情中直接预览，免费版最多 10 个图解。" },
     { q: "计数器 / 行计数器如何使用？", a: "打开工具盒 → 「行计数器」→ 点击屏幕计数；支持保存多个项目独立计数，锁屏显示小组件。计数数据自动保存，退出 App 不丢失。" },
     { q: "Pro 订阅如何退款？", a: "订阅通过 Apple 官方渠道处理：<br>前往 <a href='https://reportaproblem.apple.com' target='_blank'>reportaproblem.apple.com</a> → 登录 Apple ID → 找到对应订阅 → 申请退款。Apple 通常 48 小时内处理。" },
     { q: "如何取消自动续订？", a: "iPhone 打开 <strong>设置 → 你的 Apple ID → 订阅</strong> → 找到 YarnStash → 取消订阅。取消后当前周期内仍可使用全部 Pro 功能。" },
@@ -420,8 +420,8 @@ I18N["zh-CN"] = {
   ],
   subTitle: "订阅与权限",
   subLines: [
-    "<strong>免费版：</strong>最多管理 20 团毛线、3 个项目；基础图案库访问；每日计算器有限次数。",
-    "<strong>Pro 订阅：</strong>无限毛线与项目；全部 12 种计算器；云同步备份；批量导入导出；专属统计报表。",
+    "<strong>免费版：</strong>最多 30 团毛线、10 个项目、10 个图解；基础工具盒可用；不可导出。",
+    "<strong>Pro 订阅：</strong>无限毛线、项目、图解；全部 6 种工具无限制；iCloud 云同步；批量导入导出；高级统计报表。",
     "<strong>自动续订：</strong>订阅到期前 24 小时自动扣费，可随时在 Apple ID 设置中取消。",
     "<strong>隐私政策：</strong><a href='https://shamoshuisheng.github.io/privacy' target='_blank'>查看完整隐私政策</a>"
   ],
@@ -429,7 +429,7 @@ I18N["zh-CN"] = {
   statuses: [
     { label: "数据存储", value: "iCloud / 本地" },
     { label: "Pro 功能", value: "已就绪" },
-    { label: "图案库", value: "10,000+ 图解" },
+    { label: "图解格式", value: "PDF / 图片" },
     { label: "支持系统", value: "iOS 16+" }
   ],
   privacy: "隐私政策",
@@ -447,15 +447,15 @@ I18N["en"] = {
   feats: [
     { icon: "yarn", title: "Yarn Stash Manager", desc: "Home → tap「+」→ enter brand/color/spec → save. Batch import & photo recognition supported." },
     { icon: "project", title: "Project Tracker", desc: "Projects → new project → link yarns → add progress logs. Auto-calculates remaining yardage & ETA." },
-    { icon: "pattern", title: "Pattern Library", desc: "Patterns → search / browse by category → save to project. PDF charts & row counter markers." },
-    { icon: "calc", title: "Calculator Tools", desc: "Toolbox → gauge calc / yardage estimator / size converter. All local, no network needed." }
+    { icon: "pattern", title: "Local Pattern Library", desc: "Patterns → import PDF / images from Files app → preview locally → link to knitting projects." },
+    { icon: "calc", title: "Toolbox", desc: "Calculator, stats, color matcher, row counter, gauge, yardage estimator. 6 tools, all local." }
   ],
   faqTitle: "FAQ",
   faqs: [
     { q: "Is my yarn data synced to the cloud?", a: "<strong>Optional.</strong> YarnStash uses iCloud (CloudKit) by default — no third-party servers. You can disable iCloud in Settings for fully offline use." },
     { q: "How to upgrade to Pro?", a: "Open app → Me →「Go Pro」→ pick a plan → pay via Apple ID. Pro unlocks automatically; if not, tap「Restore Purchases」." },
     { q: "How to transfer data to a new device?", a: "Two ways：<br>1. <strong>iCloud</strong>：sign in with the same Apple ID on new device → data restores automatically.<br>2. <strong>Export</strong>：old device → Settings → Export → AirDrop to new device → Import." },
-    { q: "Can't find a pattern in the library?", a: "Try：<br>1. English keywords (most patterns come from Ravelry)；<br>2. Shorter terms, e.g.「scarf」not「knit scarf pattern free」；<br>3. Add pattern sources in「Settings → Pattern Sources」." },
+    { q: "Can't find a pattern in the library?", a: "YarnStash is a <strong>local pattern manager</strong>. Import your own patterns：<br>Home → Pattern Library → tap「+」→ choose from Files app. Supports <strong>PDF</strong> and <strong>images</strong> (PNG/JPG). Up to 10 patterns on free plan." },
     { q: "How does the row counter work?", a: "Toolbox → Row Counter → tap to count. Multiple independent counters per project; lock-screen widget available. Counts auto-save." },
     { q: "How do I get a refund for Pro?", a: "Subscriptions are handled by Apple：<br>Go to <a href='https://reportaproblem.apple.com' target='_blank'>reportaproblem.apple.com</a> → sign in → find subscription → request refund. Apple responds within 48h." },
     { q: "How do I cancel auto-renewal?", a: "On iPhone go to <strong>Settings → your Apple ID → Subscriptions</strong> → find YarnStash → Cancel. Pro features stay until end of current period." },
@@ -463,8 +463,8 @@ I18N["en"] = {
   ],
   subTitle: "Subscription & Access",
   subLines: [
-    "<strong>Free:</strong> Up to 20 yarns, 3 projects; basic pattern access; limited daily calculator usage.",
-    "<strong>Pro:</strong> Unlimited yarns & projects; all 12 calculators; cloud sync; bulk import/export; premium statistics.",
+    "<strong>Free:</strong> Up to 30 yarns, 10 projects, 10 patterns; basic toolbox; export disabled.",
+    "<strong>Pro:</strong> Unlimited yarns, projects & patterns; all 6 tools; iCloud sync; bulk import/export; premium statistics.",
     "<strong>Auto-renewal:</strong> Charged 24h before period ends. Cancel anytime in Apple ID settings.",
     "<strong>Privacy Policy:</strong><a href='https://shamoshuisheng.github.io/privacy' target='_blank'>View full policy</a>"
   ],
@@ -472,7 +472,7 @@ I18N["en"] = {
   statuses: [
     { label: "Storage", value: "iCloud / Local" },
     { label: "Pro Features", value: "Ready" },
-    { label: "Patterns", value: "10,000+" },
+    { label: "Pattern Format", value: "PDF / Image" },
     { label: "Supported OS", value: "iOS 16+" }
   ],
   privacy: "Privacy",
@@ -490,8 +490,8 @@ I18N["zh-TW"] = {
   feats: [
     { icon: "yarn", title: "毛線庫存管理", desc: "首頁 → 點「+」新增毛線 → 輸入品牌/色號/規格 → 儲存。支援批次匯入、拍照辨識。" },
     { icon: "project", title: "編織專案追蹤", desc: "專案庫 → 新建專案 → 關聯毛線 → 新增進度日誌。自動計算剩餘用量與預計完成日期。" },
-    { icon: "pattern", title: "圖案與圖解", desc: "圖案庫 → 關鍵字搜尋 / 分類瀏覽 → 收藏到專案。支援 PDF 圖解查看與行計數標記。" },
-    { icon: "calc", title: "計算器工具", desc: "工具箱 → 密度計算 / 用線估算 / 尺寸換算。所有計算本地完成，無需聯網。" }
+    { icon: "pattern", title: "圖解本機管理", desc: "圖案庫 → 從「檔案」App 匯入 PDF / 圖片圖解 → 本機預覽 → 關聯到編織專案。" },
+    { icon: "calc", title: "工具箱", desc: "計算器、統計報表、配色查找、行計數器、密度測量、用線估算。共 6 種工具，全部本機運行。" }
   ],
   faqTitle: "常見問題",
   faqs: [
@@ -503,15 +503,15 @@ I18N["zh-TW"] = {
   ],
   subTitle: "訂閱與權限",
   subLines: [
-    "<strong>免費版：</strong>最多 20 團毛線、3 個專案；基礎圖案庫；計算器每日有限次數。",
-    "<strong>Pro：</strong>無限毛線與專案；全部 12 種計算器；雲端備份；批次匯入匯出；統計報表。",
+    "<strong>免費版：</strong>最多 30 團毛線、10 個專案、10 個圖解；基礎工具箱可用；不可匯出。",
+    "<strong>Pro：</strong>無限毛線、專案、圖解；全部 6 種工具無限制；iCloud 雲同步；批次匯入匯出；進階統計報表。",
     "<strong>隱私政策：</strong><a href='https://shamoshuisheng.github.io/privacy' target='_blank'>檢視完整政策</a>"
   ],
   statusTitle: "App 狀態",
   statuses: [
     { label: "儲存方式", value: "iCloud / 本機" },
     { label: "Pro 功能", value: "就緒" },
-    { label: "圖解數量", value: "10,000+" },
+    { label: "圖解格式", value: "PDF / 圖片" },
     { label: "支援系統", value: "iOS 16+" }
   ],
   privacy: "隱私權",
@@ -529,8 +529,8 @@ I18N["ja"] = {
   feats: [
     { icon: "yarn", title: "毛糸在庫管理", desc: "ホーム → 「+」をタップ → ブランド/色番号/規格を入力 → 保存。一括登録・写真認識対応。" },
     { icon: "project", title: "プロジェクト管理", desc: "プロジェクト → 新規作成 → 毛糸を紐付け → 進捗記録。残量と完了予定日を自動計算。" },
-    { icon: "pattern", title: "パターン図書館", desc: "パターン → 検索/カテゴリ別閲覧 → プロジェクトに追加。PDFチャートとカウンターマーカー対応。" },
-    { icon: "calc", title: "計算ツール", desc: "ツールボックス → ゲージ計算 / 毛糸量見積り / サイズ換算。すべてローカル処理。" }
+    { icon: "pattern", title: "ローカルパターン管理", desc: "パターン → 「ファイル」App から PDF / 画像を読込 → プレビュー → プロジェクトに紐付け。" },
+    { icon: "calc", title: "ツールボックス", desc: "計算機、統計、カラーマッチ、カウンター、ゲージ、毛糸量見積り。全6種、ローカル処理。" }
   ],
   faqTitle: "よくある質問",
   faqs: [
@@ -541,15 +541,15 @@ I18N["ja"] = {
   ],
   subTitle: "サブスクリプション",
   subLines: [
-    "<strong>無料版：</strong>最大 20 糸、3 プロジェクト；基本パターン；計算ツールは1日の回数制限あり。",
-    "<strong>Pro：</strong>無制限；全12種計算ツール；クラウド同期；一括入出力；プレミアム統計。",
+    "<strong>無料版：</strong>最大 30 糸、10 プロジェクト、10 パターン; 基本ツールボックス; エクスポート不可。",
+    "<strong>Pro：</strong>無制限; 全6種ツール; iCloud同期; 一括入出力; プレミアム統計。",
     "<strong>プライバシー：</strong><a href='https://shamoshuisheng.github.io/privacy' target='_blank'>全文を見る</a>"
   ],
   statusTitle: "ステータス",
   statuses: [
     { label: "保存先", value: "iCloud / ローカル" },
     { label: "Pro", value: "対応" },
-    { label: "パターン数", value: "10,000+" },
+    { label: "パターン形式", value: "PDF / 画像" },
     { label: "対応OS", value: "iOS 16+" }
   ],
   privacy: "プライバシー",
@@ -567,8 +567,8 @@ I18N["ko"] = {
   feats: [
     { icon: "yarn", title: "실뭉치 재고 관리", desc: "홈 → 「+」탭 → 브랜드/색상/규격 입력 → 저장. 일괄 등록·사진 인식 지원." },
     { icon: "project", title: "프로젝트 추적", desc: "프로젝트 → 새 프로젝트 → 실 연결 → 진행 상황 추가. 남은 실 양과 예상 완료일 자동 계산." },
-    { icon: "pattern", title: "도안 라이브러리", desc: "도안 → 검색 / 카테고리별 탐색 → 프로젝트에 저장. PDF 차트와 행 카운터 마커 지원." },
-    { icon: "calc", title: "계산기 도구", desc: "툴박스 → 게이지 계산 / 실 양 추정 / 사이즈 변환. 모두 로컬 처리, 인터넷 불필요." }
+    { icon: "pattern", title: "도안 로컬 관리", desc: "도안 → 「파일」앱에서 PDF / 이미지 가져오기 → 로컬 미리보기 → 프로젝트에 연결." },
+    { icon: "calc", title: "툴박스", desc: "계산기, 통계, 컬러 매칭, 카운터, 게이지, 실 양 추정. 총 6종, 모두 로컬 실행." }
   ],
   faqTitle: "자주 묻는 질문",
   faqs: [
@@ -581,8 +581,8 @@ I18N["ko"] = {
   ],
   subTitle: "구독 및 권한",
   subLines: [
-    "<strong>무료:</strong> 최대 20개 실뭉치, 3개 프로젝트; 기본 도안 라이브러리; 계산기 일일 사용 제한.",
-    "<strong>Pro:</strong> 무제한 실뭉치와 프로젝트; 전체 12종 계산기; 클라우드 동기화; 일괄 가져오기/내보내기; 프리미엄 통계.",
+    "<strong>무료:</strong> 최대 30개 실뭉치, 10개 프로젝트, 10개 도안; 기본 툴박스; 내보내기 불가.",
+    "<strong>Pro:</strong> 무제한 실, 프로젝트, 도안; 전체 6종 도구; iCloud 동기화; 일괄 가져오기/내보내기; 고급 통계.",
     "<strong>자동 갱신:</strong> 기간 종료 24시간 전 자동 결제. Apple ID 설정에서 언제든 취소 가능.",
     "<strong>개인정보 처리방침:</strong><a href='https://shamoshuisheng.github.io/privacy' target='_blank'>전문 보기</a>"
   ],
@@ -590,7 +590,7 @@ I18N["ko"] = {
   statuses: [
     { label: "저장 방식", value: "iCloud / 로컬" },
     { label: "Pro 기능", value: "준비됨" },
-    { label: "도안 수", value: "10,000+" },
+    { label: "도안 형식", value: "PDF / 이미지" },
     { label: "지원 OS", value: "iOS 16+" }
   ],
   privacy: "개인정보 처리방침",
@@ -608,8 +608,8 @@ I18N["de"] = {
   feats: [
     { icon: "yarn", title: "Garnlager verwalten", desc: "Startseite → 「+」tippen → Marke/Farbe/Größe eingeben → speichern. Massenimport und Fotoerkennung unterstützt." },
     { icon: "project", title: "Projekt-Tracker", desc: "Projekte → neues Projekt → Garne verknüpfen → Fortschrittstagebuch. Restgarn und voraussichtliches Enddatum automatisch berechnet." },
-    { icon: "pattern", title: "Muster-Bibliothek", desc: "Muster → suchen / nach Kategorien stöbern → zum Projekt speichern. PDF-Charts und Zeilenmarkierungen." },
-    { icon: "calc", title: "Rechner-Werkzeuge", desc: "Werkzeugkasten → Maschenprobe berechnen / Garnmenge schätzen / Größe umrechnen. Alles lokal, kein Netz nötig." }
+    { icon: "pattern", title: "Lokale Musterverwaltung", desc: "Muster → PDF / Bild aus Dateien-App importieren → lokal anzeigen → mit Projekt verknüpfen." },
+    { icon: "calc", title: "Werkzeugkasten", desc: "Rechner, Statistik, Farbvergleich, Zähler, Maschenprobe, Garnmenge. 6 Tools, alle lokal." }
   ],
   faqTitle: "Häufige Fragen",
   faqs: [
@@ -622,8 +622,8 @@ I18N["de"] = {
   ],
   subTitle: "Abo & Zugriff",
   subLines: [
-    "<strong>Kostenlos:</strong> Bis zu 20 Garne, 3 Projekte; einfache Musterbibliothek; begrenzte tägliche Rechner-Nutzung.",
-    "<strong>Pro:</strong> Unbegrenzt Garne & Projekte; alle 12 Rechner; Cloud-Sync; Massenimport/-export; Premium-Statistiken.",
+    "<strong>Kostenlos:</strong> Bis zu 30 Garne, 10 Projekte, 10 Muster; einfacher Werkzeugkasten; Export deaktiviert.",
+    "<strong>Pro:</strong> Unbegrenzt Garne, Projekte & Muster; alle 6 Tools; iCloud-Sync; Massenimport/-export; Premium-Statistiken.",
     "<strong>Automatische Verlängerung:</strong> 24 Stunden vor Ende des Zeitraums belastet. Jederzeit in Apple ID-Einstellungen kündbar.",
     "<strong>Datenschutz:</strong><a href='https://shamoshuisheng.github.io/privacy' target='_blank'>Vollständige Datenschutzerklärung</a>"
   ],
@@ -649,8 +649,8 @@ I18N["fr"] = {
   feats: [
     { icon: "yarn", title: "Gérer son stock de laine", desc: "Accueil → 「+」taper → saisir marque/couleur/spécifications → enregistrer. Import en masse et reconnaissance photo." },
     { icon: "project", title: "Suivi de projet", desc: "Projets → nouveau projet → lier les laines → ajouter un journal de progression. Calcul automatique du reste et de la date estimée." },
-    { icon: "pattern", title: "Bibliothèque de patrons", desc: "Patrons → rechercher / parcourir par catégorie → enregistrer au projet. Graphiques PDF et marqueurs de rangée." },
-    { icon: "calc", title: "Outils calcul", desc: "Boîte à outils → calcul de jauge / estimation de laine / conversion de taille. Tout local, pas de connexion nécessaire." }
+    { icon: "pattern", title: "Gestion locale des patrons", desc: "Patrons → importer PDF / images depuis Fichiers → prévisualiser → lier au projet." },
+    { icon: "calc", title: "Boîte à outils", desc: "Calculatrice, stats, couleurs, compteur, jauge, estimation de laine. 6 outils, tout local." }
   ],
   faqTitle: "Questions fréquentes",
   faqs: [
@@ -663,8 +663,8 @@ I18N["fr"] = {
   ],
   subTitle: "Abonnement & accès",
   subLines: [
-    "<strong>Gratuit :</strong> Jusqu'à 20 pelotes, 3 projets; accès basic aux patrons; usage quotidien limité des calculatrices.",
-    "<strong>Pro :</strong> Pelotes et projets illimités; les 12 calculatrices; synchro cloud; import/export en masse; statistiques premium.",
+    "<strong>Gratuit :</strong> Jusqu'à 30 pelotes, 10 projets, 10 patrons; boîte à outils basique; export désactivé.",
+    "<strong>Pro :</strong> Pelotes, projets et patrons illimités; les 6 outils; synchro iCloud; import/export en masse; statistiques premium.",
     "<strong>Renouvellement auto :</strong> Facturé 24 h avant la fin de chaque période. Résiliable à tout moment dans les réglages Apple ID.",
     "<strong>Politique de confidentialité :</strong><a href='https://shamoshuisheng.github.io/privacy' target='_blank'>Voir la politique complète</a>"
   ],
